@@ -7,23 +7,28 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # This line is important!
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Updated from v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # Updated from v3
         with:
-          node-version: '18'
+          node-version: '20' # Updated to Node 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci # Changed from npm install for more reliable builds
 
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true # This creates a single-commit history on gh-pages branch
