@@ -8,20 +8,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # This line is important!
+      contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 # Updated from v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4 # Updated from v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20' # Updated to Node 20
+          node-version: '20'
+
+      - name: Change to project directory
+        run: cd life-calc
 
       - name: Install dependencies
-        run: npm ci # Changed from npm install for more reliable builds
+        working-directory: ./life-calc
+        run: npm install
 
       - name: Build
+        working-directory: ./life-calc
         run: npm run build
         env:
           NODE_ENV: production
@@ -30,5 +35,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          force_orphan: true # This creates a single-commit history on gh-pages branch
+          publish_dir: ./life-calc/build
+          force_orphan: true
