@@ -18,22 +18,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Change to project directory
-        run: cd life-calc
-
       - name: Install dependencies
         working-directory: ./life-calc
         run: npm install
 
-      - name: Build
+      - name: Deploy
         working-directory: ./life-calc
-        run: npm run build
+        run: npm run deploy
         env:
           NODE_ENV: production
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./life-calc/build
-          force_orphan: true
+          GIT_CONFIG_NAME: "GitHub Actions"
+          GIT_CONFIG_EMAIL: "actions@github.com"
