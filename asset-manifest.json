@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/life-calculator/static/css/main.f855e6bc.css",
+    "main.js": "/life-calculator/static/js/main.01f7f3f1.js",
+    "static/js/453.934e8794.chunk.js": "/life-calculator/static/js/453.934e8794.chunk.js",
+    "index.html": "/life-calculator/index.html",
+    "main.f855e6bc.css.map": "/life-calculator/static/css/main.f855e6bc.css.map",
+    "main.01f7f3f1.js.map": "/life-calculator/static/js/main.01f7f3f1.js.map",
+    "453.934e8794.chunk.js.map": "/life-calculator/static/js/453.934e8794.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.01f7f3f1.js"
+  ]
+}
